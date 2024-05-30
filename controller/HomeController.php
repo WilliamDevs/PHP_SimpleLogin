@@ -1,6 +1,6 @@
 <?php 
 
-session_start();
+
 class HomeController{
     public $model;
 
@@ -13,7 +13,7 @@ class HomeController{
 
             $checkUserLogin = $this->model->CheckUserLogin($username,$password);
             if ($checkUserLogin==1) {
-                $_SESSION['userLogIn']=1
+                $_SESSION['userLogInStatus']=1
                 # code...
             }
         }
@@ -22,7 +22,7 @@ class HomeController{
     }
 
     public function routeManager(){
-        if(isset($_SESSION['userLogIn'])){
+        if(isset($_SESSION['userLogInStatus'])){
             return require_once('views/dashboard.php');
         }
         return require_once('views/login.php');
